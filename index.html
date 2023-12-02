@@ -39,7 +39,7 @@ title="nix-shell is part of Nix: the reproducible, declarative, reliable package
 <blockquote>
 <p><code>vim shell.nix</code></p>
 </blockquote>
-<p><a href="#BACK" id="HERE">???</a></p>
+<p><a href="#BACK" id="HERE">FIXED</a></p>
 <div class="sourceCode" id="cb4"><pre
 class="sourceCode nix"><code class="sourceCode nix"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># shell.nix</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span> <span class="va">pkgs</span> <span class="op">?</span> <span class="bu">import</span> &lt;nixpkgs&gt; <span class="op">{}</span> <span class="op">}</span>:</span>
@@ -102,5 +102,57 @@ class="sourceCode bash"><span class="ex">brave</span> index.html <span class="co
 class="sourceCode md"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>~/blag god• ❱ rg &quot;the thing about learning markdown is&quot; -A 1 --heading | tail -1</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>**you are already writing it**</span></code></pre></div>
 <p>Everything looking good so far.</p>
-<p><strong>wait</strong> over <a href="#HERE" id="BACK">HERE</a> that
-nix-shell codeblock isn’t rendering.</p>
+<p><strong>wait</strong> over <a href="#HERE">HERE</a> that nix-shell
+codeblock <del>isn’t</del> wasn’t rendering right</p>
+<hr />
+<p><em>Sat Dec 2 04:28:46 AM EST 2023</em></p>
+<h3 id="making-mistakes">making mistakes</h3>
+<p>One of the benefits of markdown is that we don’t have to worry so
+much about making mistakes. That is because our mistakes have
+<strong>locality</strong>; errors (or changes) in one part of the
+document are unlikely to alter the output of other parts that are far
+away. For an example of non-locality, consider rust, where the smallest
+change in one file will cause the entire output to change – often from
+an executable program, to a lack of an executable program and a pile of
+error messages. ( tbf, on the set of inputs which compile, Rust
+<em>is</em> more local than, say, c – meanwhile rust and something like
+js are local in <em>different ways</em> ).</p>
+<p>Locality is going to keep coming up, and <a
+href="https://en.wikipedia.org/wiki/Get_Used_to_It_(song)">its hardly he
+only thing</a>.</p>
+<p><em>anyway</em></p>
+<blockquote>
+<p><code>git show f4ec84c35a index.md</code></p>
+</blockquote>
+<pre><code>~/blag god• ↑3 ❱ git show f4ec84c35a index.md
+commit f4ec84c35abb2f5d4043c7cd925ac8e32efa7bdc (HEAD -&gt; god)
+Author: Erich Spaker &lt;erichspaker@gmail.com&gt;
+Date:   Sat Dec 2 06:05:18 2023 -0500
+
+    fix: I&#39;ve mixed up my backticks and apostrophes again</code></pre>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode diff"><code class="sourceCode diff"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">diff --git a/index.md b/index.md</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>index f0ef522..2726240 100644</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="dt">--- a/index.md</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="dt">+++ b/index.md</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="dt">@@ -58,12 +58,12 @@ Have a [nix-shell](https://nix.dev/tutorials/first-steps/declarative-shell.html</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="st">-&#39;&#39;&#39;nix</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="va">+```nix</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a> # shell.nix</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a> { pkgs ? import &lt;nixpkgs&gt; {} }:</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a> pkgs.mkShell {</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>   packages = with pkgs; [</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>     pandoc</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>   ];</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a> }</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="st">-&#39;&#39;&#39;</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="va">+```</span></span></code></pre></div>
+<p><a href="#HERE" id="BACK">FIXED</a></p>
+<hr />
+<p>TIP: settings to get (imo) <a
+href="https://git-scm.com/docs/diff-config#Documentation/diff-config.txt-diffinterHunkContext">optimal
+diff context</a>:</p>
+<pre><code>~/blag god• ❱ git config --local diff.context 1
+~/blag god• ❱ git config --local diff.interHunkContext 7</code></pre>
