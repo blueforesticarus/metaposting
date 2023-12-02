@@ -1,3 +1,9 @@
+<style>
+  a:target {
+    background-color: yellow;
+  }
+</style>
+
 # day 0
 *Fri Dec  1 02:10:23 PM EST 2023*
 
@@ -45,6 +51,8 @@ git branch -m god
 Have a [nix-shell](https://nix.dev/tutorials/first-steps/declarative-shell.html "nix-shell is part of Nix: the reproducible, declarative, reliable package manager.").
 
 > `vim shell.nix`
+
+<a href="#BACK" id="HERE">???</a>
 
 '''nix
 # shell.nix
@@ -122,3 +130,5 @@ and then
 ```
 
 Everything looking good so far.
+
+**wait** over <a href="#HERE" id="BACK">HERE</a> that nix-shell codeblock isn't rendering.

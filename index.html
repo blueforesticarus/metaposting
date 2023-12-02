@@ -1,3 +1,8 @@
+<style>
+  :target {
+    background-color: yellow;
+  }
+</style>
 <h1 id="day-0">day 0</h1>
 <p><em>Fri Dec 1 02:10:23 PM EST 2023</em></p>
 <h2 id="getting-started-again">getting started (again)</h2>
@@ -34,6 +39,7 @@ title="nix-shell is part of Nix: the reproducible, declarative, reliable package
 <blockquote>
 <p><code>vim shell.nix</code></p>
 </blockquote>
+<p><a href="#BACK" id="HERE">???</a></p>
 <p>’’’nix # shell.nix { pkgs ? import <nixpkgs> {} }:</p>
 <p>pkgs.mkShell { packages = with pkgs; [ pandoc ]; } ’’’</p>
 <p>Reproducible build environment as <a href="##"
@@ -88,3 +94,5 @@ class="sourceCode bash"><span class="ex">brave</span> index.html <span class="co
 <div class="sourceCode" id="cb9"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>~/blag god• ❱ rg &quot;the thing about learning markdown is&quot; -A 1 --heading | tail -1</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>**you are already writing it**</span></code></pre></div>
 <p>Everything looking good so far.</p>
+<p><strong>wait</strong> over <a href="#HERE" id="BACK">HERE</a> that
+nix-shell isn’t rendering.</p>
