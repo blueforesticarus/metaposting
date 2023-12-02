@@ -54,7 +54,7 @@ Have a [nix-shell](https://nix.dev/tutorials/first-steps/declarative-shell.html 
 
 <a href="#BACK" id="HERE">???</a>
 
-'''nix
+```nix
 # shell.nix
 { pkgs ? import <nixpkgs> {} }:
 
@@ -63,7 +63,7 @@ pkgs.mkShell {
     pandoc
   ];
 }
-'''
+```
 
 Reproducible build environment as [WOMB](## "works on my build") point of truth: [(install nix)](https://nixos.org/download).
 
