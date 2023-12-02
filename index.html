@@ -1,0 +1,83 @@
+<h1 id="day-0">day 0</h1>
+<p><em>Fri Dec 1 02:10:23 PM EST 2023</em></p>
+<h2 id="getting-started-again">getting started (again)</h2>
+<p>Some things never change</p>
+<blockquote>
+<p><code>mkdir blag ; cd blag ; git blag</code></p>
+</blockquote>
+<pre><code>~ ❱ mkdir blag ; cd blag ; git init
+hint: Using &#39;master&#39; as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch &lt;name&gt;
+hint:
+hint: Names commonly chosen instead of &#39;master&#39; are &#39;main&#39;, &#39;trunk&#39; and
+hint: &#39;development&#39;. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m &lt;name&gt;
+Initialized empty Git repository in /home/user/blag/.git/
+~/blag master• ❱ </code></pre>
+<p>👀 or not…</p>
+<pre><code>~/blag ❱ git config --global init.defaultBranch somethingterriblyoffensive
+~/blag ❱ rm -rf .git
+~/blag ❱ git init
+Initialized empty Git repository in /home/user/blag/.git/
+~/blag somethingterriblyoffensive• ❱</code></pre>
+<p>Hmm… better to keep it simple.</p>
+<pre><code>git branch -m god
+~/blag god ❱ </code></pre>
+<h2 id="dependencies">dependencies</h2>
+<p>Have a <a
+href="https://nix.dev/tutorials/first-steps/declarative-shell.html"
+title="nix-shell is part of Nix: the reproducible, declarative, reliable package manager.">nix-shell</a>.</p>
+<blockquote>
+<p><code>vim shell.nix</code></p>
+</blockquote>
+<p>’’’nix # shell.nix { pkgs ? import <nixpkgs> {} }:</p>
+<p>pkgs.mkShell { packages = with pkgs; [ pandoc ]; } ’’’</p>
+<p>Reproducible build environment as <a href="##"
+title="works on my build">WOMB</a> point of truth: <a
+href="https://nixos.org/download">(install nix)</a>.</p>
+<blockquote>
+<p><code>nix-shell --pure</code></p>
+</blockquote>
+<pre><code>~/blag god• 7m 6.1s ❱ nix-shell --pure
+[nix-shell:~/blag]$ head -10 index.md</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># day 0</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>*Fri Dec  1 02:10:23 PM EST 2023*</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">## getting started (again)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>Some things never change</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span><span class="in">`mkdir blag ; cd blag ; git blag`</span></span></code></pre></div>
+<pre><code>[nix-shell:~/blag]$ pandoc index.md | head -8`</code></pre>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;day-0&quot;</span><span class="dt">&gt;</span>day 0<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>Fri Dec 1 02:10:23 PM EST 2023<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h2</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;getting-started-again&quot;</span><span class="dt">&gt;</span>getting started (again)<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Some things never change<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">blockquote</span><span class="dt">&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>mkdir blag ; cd blag ; git blag<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">blockquote</span><span class="dt">&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">hr</span><span class="ot"> </span><span class="dt">/&gt;</span></span></code></pre></div>
+<p>Now do the unix thing</p>
+<blockquote>
+<p><code>[nix-shell:~/blag]$ pandoc index.md &gt; index.html</code></p>
+</blockquote>
+<p>and then</p>
+<blockquote>
+<p><code
+class="sourceCode bash"><span class="ex">brave</span> index.html <span class="co"># pull that shit up</span></code></p>
+</blockquote>
+<hr />
+<h3 id="and-of-course">and of course</h3>
+<pre><code>~/blag god• ❱ git add index.html index.md  shell.nix
+~/blag god• ❱ git commit -m &quot;let there be light&quot; # --amend will come in handy
+[god e1a6ae6] let there be light
+ Date: Sat Dec 2 04:45:44 2023 -0500
+ 3 files changed, 201 insertions(+)
+ create mode 100644 index.html
+ create mode 100644 index.md
+ create mode 100644 shell.nix</code></pre>
