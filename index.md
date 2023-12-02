@@ -111,3 +111,14 @@ and then
  create mode 100644 shell.nix
 ```
 
+***
+*Sat Dec  2 04:28:46 AM EST 2023*
+
+## ~~learning~~ markdown (again)
+
+```md
+~/blag god• ❱ rg "the thing about learning markdown is" -A 1 --heading | tail -1
+**you are already writing it**
+```
+
+Everything looking good so far.
